@@ -1,27 +1,27 @@
 const TestERC20Token = artifacts.require('TestERC20Token.sol');
 
 contract('ERC20Token', (accounts) => {
-  const supply = 125000000; // 125m
+  const supply = 720000000; // 720m
   const owner = accounts[0];
   const dev1 = accounts[1];
 
   it('shall put 125m for creator', async () => {
 
-    let token = await TestERC20Token.new('Farad', 'FRD', 8, supply);
+    let token = await TestERC20Token.new('EXP24K', 'EXP24K', 8, supply);
     let bal = await token.balanceOf.call(owner);
-    assert.equal(bal.toNumber(), supply, '125m shall be the balance');
+    assert.equal(bal.toNumber(), supply, '720 shall be the balance');
   });
 
   it('shall show a correct balance', async () => {
-    let token = await TestERC20Token.new('Farad', 'FRD', 8, supply);
+    let token = await TestERC20Token.new('EXP24K', 'EXP24K', 8, supply);
     let bal = await token.balanceOf.call(owner);
-    assert.equal(bal.toNumber(), supply, '125m shall be the balance');
+    assert.equal(bal.toNumber(), supply, '720m shall be the balance');
   });
 
   it('shall make a correct transfer', () => {
-    let token = await TestERC20Token.new('Farad', 'FRD', 8, supply);
+    let token = await TestERC20Token.new('EXP24K', 'EXP24K', 8, supply);
     let bal = await token.balanceOf.call(owner);
-    assert.equal(bal.toNumber(), supply, '125m shall be the balance');
+    assert.equal(bal.toNumber(), supply, '720m shall be the balance');
 
     await token.transfer(dev1, 1000, {from: owner});
     let b1 = await token.balanceOf.call(dev1);
